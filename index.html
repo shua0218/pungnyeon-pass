@@ -513,27 +513,28 @@ const priceForCount = (base, count) => Math.round((base * (1 - tierPercent(count
 
 /* ---------------- Seed data ---------------- */
 const MARTS = [
-  { name: "삼천 로컬푸드마켓", distance: "120m", tag: "당일수확 야채 전문", freeDelivery: false },
-  { name: "송천 현대식자재마트", distance: "350m", tag: "대용량 식자재 최저가", freeDelivery: false },
-  { name: "중화산 탑마트", distance: "600m", tag: "신선 가공식품 최다보유", freeDelivery: true },
-  { name: "인후 유기농상점", distance: "890m", tag: "유기농 친환경 산지 직송", freeDelivery: false },
-  { name: "효자 할인식자재", distance: "1500m", tag: "정육/수산 타임세일 특화", freeDelivery: true },
+  { name: "금암 로컬푸드마켓", distance: "847m", tag: "당일수확 야채 전문", freeDelivery: false },
+  { name: "송천 현대식자재마트", distance: "2.8km", tag: "대용량 식자재 최저가", freeDelivery: false },
+  { name: "중화산 탑마트", distance: "4.9km", tag: "신선 가공식품 최다보유", freeDelivery: true },
+  { name: "인후 유기농상점", distance: "4.1m", tag: "유기농 친환경 산지 직송", freeDelivery: false },
+  { name: "효자 할인식자재", distance: "6km", tag: "정육/수산 타임세일 특화", freeDelivery: true },
+  { name: "전북 사대부고마트", distance: "0m", tag: "생필품 최저가 특화", freeDelivery: true },
 ];
 
 const SEED_PRODUCTS = [
   { name: "신라면 5봉묶음", price: 4900, originalPrice: 6200, martName: "송천 현대식자재마트", category: "라면/식품", isLocalFood: false, distanceMeters: 350 },
-  { name: "전주 무농약 햇대파 1단", price: 1900, originalPrice: 3200, martName: "삼천 로컬푸드마켓", category: "채소/로컬푸드", isLocalFood: true, distanceMeters: 120 },
+  { name: "전주 무농약 햇대파 1단", price: 1900, originalPrice: 3200, martName: "금암 로컬푸드마켓", category: "채소/로컬푸드", isLocalFood: true, distanceMeters: 120 },
   { name: "친환경 대란 30구 (특란급)", price: 5400, originalPrice: 7800, martName: "인후 유기농상점", category: "채소/로컬푸드", isLocalFood: true, distanceMeters: 890 },
   { name: "서울우유 나100% 1L", price: 2650, originalPrice: 3100, martName: "중화산 탑마트", category: "라면/식품", isLocalFood: false, distanceMeters: 600 },
   { name: "전주 햇감자 완주군 직송 1kg", price: 2800, originalPrice: 4500, martName: "삼천 로컬푸드마켓", category: "채소/로컬푸드", isLocalFood: true, distanceMeters: 120 },
   { name: "동원참치 라이트스탠다드 135g 3캔", price: 6900, originalPrice: 9800, martName: "효자 할인식자재", category: "라면/식품", isLocalFood: false, distanceMeters: 1500 },
-  { name: "국산 삼겹살 구이용 500g", price: 11500, originalPrice: 14800, martName: "효자 할인식자재", category: "축산/수산", isLocalFood: false, distanceMeters: 1500 },
+  { name: "페리오 뉴 후레쉬 플러스 치약 150g 3개", price: 11500, originalPrice: 14800, martName: "전북 사대부고마트", category: "생필품", isLocalFood: false, distanceMeters: 1500 },
   { name: "크리넥스 3겹 화장지 30롤", price: 17900, originalPrice: 23900, martName: "중화산 탑마트", category: "생필품", isLocalFood: false, distanceMeters: 600 },
 ].map(p => ({ id: uid(), isBossUploaded: false, ...p }));
 
 const SEED_GROUPBUYS = [
   { name: "전주 완주 한우 등심 1+등급 500g", basePrice: 52000, participantsCount: 1, maxParticipants: 10, martName: "송천 현대식자재마트", category: "축산/수산", endHoursRemaining: 8 },
-  { name: "남원 고랭지 꿀사과 3kg (9~12과)", basePrice: 19500, participantsCount: 4, maxParticipants: 10, martName: "삼천 로컬푸드마켓", category: "채소/로컬푸드", endHoursRemaining: 15 },
+  { name: "남원 고랭지 꿀사과 3kg (9~12과)", basePrice: 19500, participantsCount: 4, maxParticipants: 10, martName: "금암 로컬푸드마켓", category: "채소/로컬푸드", endHoursRemaining: 15 },
   { name: "오뚜기 진라면 매운맛 20봉 박스", basePrice: 16800, participantsCount: 8, maxParticipants: 10, martName: "중화산 탑마트", category: "라면/식품", endHoursRemaining: 22 },
   { name: "전주 모래내시장 수제 쑥개떡 1kg", basePrice: 12000, participantsCount: 3, maxParticipants: 8, martName: "모래내 전통 떡방앗간", category: "라면/식품", endHoursRemaining: 18 },
   { name: "완주 봉동 생강 조청 1병 (500g)", basePrice: 15000, participantsCount: 2, maxParticipants: 10, martName: "봉동 생강가공협동조합", category: "채소/로컬푸드", endHoursRemaining: 24 },
@@ -541,11 +542,11 @@ const SEED_GROUPBUYS = [
 ].map(g => ({ id: uid(), isJoined: false, currentPrice: priceForCount(g.basePrice, g.participantsCount), ...g }));
 
 const SEED_COMPARE = [
-  { id: 1, name: "크리넥스 3겹 데코 화장지", spec: "30롤", emoji: "🧻", martPrices: { "삼천 로컬푸드마켓": 23800, "송천 현대식자재마트": 22500, "중화산 탑마트": 17900, "인후 유기농상점": 24000, "효자 할인식자재": 19800 } },
-  { id: 2, name: "농심 신라면 MULTI", spec: "5봉묶음", emoji: "🍜", martPrices: { "삼천 로컬푸드마켓": 4300, "송천 현대식자재마트": 3900, "중화산 탑마트": 4100, "인후 유기농상점": 4500, "효자 할인식자재": 4050 } },
-  { id: 3, name: "테크 액체세제 드럼/일반", spec: "3L", emoji: "🧼", martPrices: { "삼천 로컬푸드마켓": 14200, "송천 현대식자재마트": 13500, "중화산 탑마트": 12900, "인후 유기농상점": 14500, "효자 할인식자재": 13100 } },
-  { id: 4, name: "동원참치 라이트스탠다드", spec: "135g x 3캔", emoji: "🐟", martPrices: { "삼천 로컬푸드마켓": 7100, "송천 현대식자재마트": 7200, "중화산 탑마트": 6900, "인후 유기농상점": 7400, "효자 할인식자재": 6500 } },
-  { id: 5, name: "코디 화인 키친타올", spec: "150매 x 4롤", emoji: "🧻", martPrices: { "삼천 로컬푸드마켓": 6100, "송천 현대식자재마트": 5400, "중화산 탑마트": 5900, "인후 유기농상점": 6200, "효자 할인식자재": 5600 } },
+  { id: 1, name: "크리넥스 3겹 데코 화장지", spec: "30롤", emoji: "🧻", martPrices: { "금암 로컬푸드마켓": 23800, "송천 현대식자재마트": 22500, "중화산 탑마트": 17900, "인후 유기농상점": 24000, "효자 할인식자재": 19800, "전북 사대부고마트": 13400 } },
+  { id: 2, name: "농심 신라면 MULTI", spec: "5봉묶음", emoji: "🍜", martPrices: { "금암 로컬푸드마켓": 4300, "송천 현대식자재마트": 3900, "중화산 탑마트": 4100, "인후 유기농상점": 4500, "효자 할인식자재": 4050 } },
+  { id: 3, name: "테크 액체세제 드럼/일반", spec: "3L", emoji: "🧼", martPrices: { "금암 로컬푸드마켓": 14200, "송천 현대식자재마트": 13500, "중화산 탑마트": 12900, "인후 유기농상점": 14500, "효자 할인식자재": 13100, "전북 사대부고마트": 10900 } },
+  { id: 4, name: "동원참치 라이트스탠다드", spec: "135g x 3캔", emoji: "🐟", martPrices: { "금암 로컬푸드마켓": 7100, "송천 현대식자재마트": 7200, "중화산 탑마트": 6900, "인후 유기농상점": 7400, "효자 할인식자재": 6500 } },
+  { id: 5, name: "코디 화인 키친타올", spec: "150매 x 4롤", emoji: "🧻", martPrices: { "금암 로컬푸드마켓": 6100, "송천 현대식자재마트": 5400, "중화산 탑마트": 5900, "인후 유기농상점": 6200, "효자 할인식자재": 5600, "전북 사대부고마트": 3600 } },
 ];
 
 const OWNER_SCAN_PRESETS = [
